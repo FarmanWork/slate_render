@@ -10,20 +10,24 @@ import 'package:flutter/gestures.dart';
 
 // Package imports:
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:slate_render/enums.dart';
-import 'package:slate_render/models/description_model.dart';
-import 'package:slate_render/models/function/helper_function.dart';
+import 'package:slate_render/src/models/function/helper_function.dart';
+import 'package:slate_render/slate.dart';
 
 class SlateRenderer extends StatefulWidget {
+  /// The output of slate editor
   final Description? description;
+
+  /// how much line you want to display if null then all line will display
   final int? maxLine;
+
+  ///  What to disable link opninng, some time good for small preview pages
   final bool isLinkDisable;
 
   const SlateRenderer({
     super.key,
     required this.description,
     this.maxLine,
-    required this.isLinkDisable,
+    this.isLinkDisable = false,
   });
 
   @override
@@ -37,10 +41,11 @@ class _SlateRendererState extends State<SlateRenderer> {
   /// To display paragraph text
   paragraph({Description? innerData, int? maxLine}) {
     return RichText(
+      // Remove maxline if no input proviede my user
       maxLines: maxLine ?? 500,
-      textAlign: innerData!.alignment == "right"
+      textAlign: innerData!.alignment == TextDirection.right
           ? TextAlign.right
-          : innerData.alignment == "center"
+          : innerData.alignment == TextDirection.center
           ? TextAlign.center
           : TextAlign.left,
       text: TextSpan(
@@ -86,8 +91,8 @@ class _SlateRendererState extends State<SlateRenderer> {
                   innerData.children![i].bgColor ?? "FFFFFF",
                 ),
                 color:
-                    innerData.children![i].url!.contains("http://") ||
-                        innerData.children![i].url!.contains("https://")
+                    innerData.children![i].url!.contains(UrlType.http) ||
+                        innerData.children![i].url!.contains(UrlType.https)
                     ? Colors.blue
                     : helperFunction.convertColor(
                         innerData.children![i].color ?? "000000",
@@ -103,9 +108,9 @@ class _SlateRendererState extends State<SlateRenderer> {
   headings({Description? innerData, int? maxLine}) {
     return RichText(
       maxLines: maxLine != null ? 1 : 500,
-      textAlign: innerData!.alignment == "right"
+      textAlign: innerData!.alignment == TextDirection.right
           ? TextAlign.right
-          : innerData.alignment == "center"
+          : innerData.alignment == TextDirection.center
           ? TextAlign.center
           : TextAlign.left,
       text: TextSpan(
@@ -153,8 +158,8 @@ class _SlateRendererState extends State<SlateRenderer> {
                   innerData.children![i].bgColor ?? "FFFFFF",
                 ),
                 color:
-                    innerData.children![i].url!.contains("http://") ||
-                        innerData.children![i].url!.contains("https://")
+                    innerData.children![i].url!.contains(UrlType.http) ||
+                        innerData.children![i].url!.contains(UrlType.https)
                     ? Colors.blue
                     : helperFunction.convertColor(
                         innerData.children![i].color ?? "000000",
@@ -184,8 +189,8 @@ class _SlateRendererState extends State<SlateRenderer> {
                           ? Text("${indexMy + 1}.  ")
                           : innerData.type ==
                                 SlateRendererFieldType.bulletedList
-                          ? const Text("⦿  ")
-                          : const Text("⦿  "),
+                          ? const Text(CountType.bullet)
+                          : const Text(CountType.bullet),
                       image(url: innerData.children![indexMy].url),
                     ],
                   )
@@ -194,9 +199,9 @@ class _SlateRendererState extends State<SlateRenderer> {
                       innerData.children![indexMy].children![0].text!.isNotEmpty
                 ? RichText(
                     maxLines: maxLine ?? 500,
-                    textAlign: innerData.alignment == "right"
+                    textAlign: innerData.alignment == TextDirection.right
                         ? TextAlign.right
-                        : innerData.alignment == "center"
+                        : innerData.alignment == TextDirection.center
                         ? TextAlign.center
                         : TextAlign.left,
                     text: TextSpan(
@@ -205,8 +210,8 @@ class _SlateRendererState extends State<SlateRenderer> {
                           ? "${indexMy + 1}.  "
                           : innerData.type ==
                                 SlateRendererFieldType.bulletedList
-                          ? "⦿  "
-                          : "⦿  ",
+                          ? CountType.bullet
+                          : CountType.bullet,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
@@ -229,8 +234,8 @@ class _SlateRendererState extends State<SlateRenderer> {
         recognizer: TapGestureRecognizer()
           ..onTap =
               !widget.isLinkDisable &&
-                  (innerData.text!.contains("https://") ||
-                      innerData.text!.contains("http://"))
+                  (innerData.text!.contains(UrlType.http) ||
+                      innerData.text!.contains(UrlType.https))
               ? () {
                   helperFunction.openUrl(url: innerData.text!);
                 }
@@ -253,8 +258,8 @@ class _SlateRendererState extends State<SlateRenderer> {
             innerData.bgColor ?? "FFFFFF",
           ),
           color:
-              innerData.text!.contains("https://") ||
-                  innerData.text!.contains("http://")
+              innerData.text!.contains(UrlType.http) ||
+                  innerData.text!.contains(UrlType.https)
               ? Colors.blue
               : helperFunction.convertColor(innerData.color ?? "000000"),
         ),

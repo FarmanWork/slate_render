@@ -10,8 +10,8 @@
 //   });
 // }
 import 'package:flutter_test/flutter_test.dart' as tt;
-import 'package:slate_render/models/description_model.dart';
-import 'package:slate_render/slate_render.dart';
+import 'package:slate_render/src/models/description_model.dart';
+import 'package:slate_render/src/slate_render.dart';
 
 void main() {
   List<Description> descriptionList = [
