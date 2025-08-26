@@ -1,5 +1,7 @@
 // Improve these classes as emun
 // by asinging emun values in model class
+// Do not delete this class as this will give me the real values comes ffrom api
+import 'package:flutter/material.dart';
 
 abstract class SlateRendererFieldType {
   static const paragraph = "paragraph";
@@ -27,4 +29,10 @@ abstract class UrlType {
 
 abstract class CountType {
   static const bullet = "⦿  ";
+}
+
+abstract class PlaceholderColor {
+  static const textBackgroundColor = "FFFFFF";
+  static const noLinkColor = "000000";
+  static const linkColor = Colors.blue;
 }

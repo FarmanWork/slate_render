@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:slate_render/src/utils/local_images.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HelperFunction {
@@ -51,13 +52,11 @@ class HelperFunction {
                     imageUrl: url,
                     fit: BoxFit.contain,
                     placeholder: (context, url) => Image.asset(
-                      // Put place holder images here(get from user or used const self)
-                      "CustomImages.imagePlaceholder2",
+                      LocalImages.placeHolderImage,
                       fit: BoxFit.contain,
                     ),
                     errorWidget: (context, url, error) => Image.asset(
-                      // Put place holder images here(get from user or used const self)
-                      "CustomImages.imagePlaceholder2",
+                      LocalImages.placeHolderImage,
                       fit: BoxFit.contain,
                     ),
                   ),
