@@ -1,23 +1,22 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:slate_render/slate.dart';
-import 'package:slate_render/src/function/helper_function.dart';
 
 class HeadingWidget extends StatelessWidget {
   final Content innerData;
   final int? maxLine;
-  final bool? isLinkDisable;
+  final bool? disableLink;
   const HeadingWidget({
     super.key,
     required this.innerData,
-    this.maxLine = 500,
-    this.isLinkDisable = false,
+    this.maxLine,
+    this.disableLink,
   });
 
   @override
   Widget build(BuildContext context) {
     return RichText(
-      maxLines: maxLine != null ? 1 : 500,
+      maxLines: maxLine,
       textAlign: innerData.alignment == TextDirection.right
           ? TextAlign.right
           : innerData.alignment == TextDirection.center
@@ -32,7 +31,7 @@ class HeadingWidget extends StatelessWidget {
                   innerData.children![i].text ??
                   " ${innerData.children![i].children![0].text} ",
               recognizer: TapGestureRecognizer()
-                ..onTap = !isLinkDisable! && innerData.children![i].url != null
+                ..onTap = !disableLink! && innerData.children![i].url != null
                     ? () {
                         HelperFunction().openUrl(
                           url: innerData.children![i].url!,
@@ -40,11 +39,11 @@ class HeadingWidget extends StatelessWidget {
                       }
                     : null,
               style: TextStyle(
-                fontSize: innerData.type == SlateRendererFieldType.h1
+                fontSize: innerData.type == ContentType.h1
                     ? 30.0
-                    : innerData.type == SlateRendererFieldType.h2
+                    : innerData.type == ContentType.h2
                     ? 25.0
-                    : innerData.type == SlateRendererFieldType.h3
+                    : innerData.type == ContentType.h3
                     ? 20.0
                     : 14.0,
                 fontWeight: innerData.children![i].bold!

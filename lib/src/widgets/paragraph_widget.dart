@@ -1,23 +1,21 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:slate_render/slate.dart';
-import 'package:slate_render/src/function/helper_function.dart';
 
 class ParagraphWidget extends StatelessWidget {
   final Content innerData;
   final int? maxLine;
-  final bool? isLinkDisable;
+  final bool? disableLink;
   const ParagraphWidget({
     super.key,
     required this.innerData,
-    this.maxLine = 500,
-    this.isLinkDisable = false,
+    this.maxLine,
+    this.disableLink,
   });
 
   @override
   Widget build(BuildContext context) {
     return RichText(
-      // Remove maxline if no input proviede my user
       maxLines: maxLine,
       textAlign: innerData.alignment == TextDirection.right
           ? TextAlign.right
@@ -34,11 +32,8 @@ class ParagraphWidget extends StatelessWidget {
                   innerData.children![i].children![0].text,
               recognizer: TapGestureRecognizer()
                 ..onTap =
-                    //if link is enable,
-                    // and inner child type is link then luanch the URL
-                    !isLinkDisable! &&
-                        innerData.children![i].type ==
-                            SlateRendererFieldType.link
+                    !disableLink! &&
+                        innerData.children![i].type == ContentType.link
                     ? () {
                         HelperFunction().openUrl(
                           url: innerData.children![i].url!,
@@ -46,7 +41,7 @@ class ParagraphWidget extends StatelessWidget {
                       }
                     : null,
               style: TextStyle(
-                fontSize: 14.0,
+                fontSize: paragraphFontSize,
                 fontWeight: innerData.children![i].bold!
                     ? FontWeight.bold
                     : FontWeight.normal,
@@ -70,7 +65,7 @@ class ParagraphWidget extends StatelessWidget {
                 color:
                     innerData.children![i].url!.contains(UrlType.http) ||
                         innerData.children![i].url!.contains(UrlType.https)
-                    ? Colors.blue
+                    ? PlaceholderColor.linkColor
                     : HelperFunction().convertColor(
                         innerData.children![i].color ??
                             PlaceholderColor.noLinkColor,

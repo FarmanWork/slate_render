@@ -3,7 +3,15 @@
 // Do not delete this class as this will give me the real values comes ffrom api
 import 'package:flutter/material.dart';
 
-abstract class SlateRendererFieldType {
+const int maxDisplayLine = 5000;
+const double imageHight = 50.0, imageWidth = 50.0;
+const Alignment imageAlignment = Alignment.center;
+const String placeHolderImage = 'assets/images/placeholder_image.png';
+
+// Paragraph
+const double paragraphFontSize = 14.0;
+
+abstract class ContentType {
   static const paragraph = "paragraph";
   static const h1 = "heading-1";
   static const h2 = "heading-2";
