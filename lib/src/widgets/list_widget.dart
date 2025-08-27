@@ -1,18 +1,16 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:slate_render/slate.dart';
-import 'package:slate_render/src/function/helper_function.dart';
-import 'package:slate_render/src/widgets/image_widget.dart';
 
 class ListWidget extends StatelessWidget {
   final Content innerData;
   final int? maxLine;
-  final bool? isLinkDisable;
+  final bool? disableLink;
   const ListWidget({
     super.key,
     required this.innerData,
-    this.maxLine = 500,
-    this.isLinkDisable = false,
+    this.maxLine,
+    this.disableLink,
   });
 
   @override
@@ -25,32 +23,30 @@ class ListWidget extends StatelessWidget {
         children: List.generate(maxLine! > 2 ? innerData.children!.length : 1, (
           indexMy,
         ) {
-          return innerData.children![indexMy].type ==
-                  SlateRendererFieldType.image
+          return innerData.children![indexMy].type == ContentType.image
               ? Row(
                   children: [
-                    innerData.type == SlateRendererFieldType.numberedList
+                    innerData.type == ContentType.numberedList
                         ? Text("${indexMy + 1}.  ")
-                        : innerData.type == SlateRendererFieldType.bulletedList
+                        : innerData.type == ContentType.bulletedList
                         ? const Text(CountType.bullet)
                         : const Text(CountType.bullet),
                     ImageWidget(url: innerData.children![indexMy].url!),
                   ],
                 )
-              : innerData.children![indexMy].type ==
-                        SlateRendererFieldType.listItem &&
+              : innerData.children![indexMy].type == ContentType.listItem &&
                     innerData.children![indexMy].children![0].text!.isNotEmpty
               ? RichText(
-                  maxLines: maxLine ?? 500,
+                  maxLines: maxLine,
                   textAlign: innerData.alignment == TextDirection.right
                       ? TextAlign.right
                       : innerData.alignment == TextDirection.center
                       ? TextAlign.center
                       : TextAlign.left,
                   text: TextSpan(
-                    text: innerData.type == SlateRendererFieldType.numberedList
+                    text: innerData.type == ContentType.numberedList
                         ? "${indexMy + 1}.  "
-                        : innerData.type == SlateRendererFieldType.bulletedList
+                        : innerData.type == ContentType.bulletedList
                         ? CountType.bullet
                         : CountType.bullet,
                     style: const TextStyle(
@@ -73,7 +69,7 @@ class ListWidget extends StatelessWidget {
         text: innerData.text,
         recognizer: TapGestureRecognizer()
           ..onTap =
-              !isLinkDisable! &&
+              !disableLink! &&
                   (innerData.text!.contains(UrlType.http) ||
                       innerData.text!.contains(UrlType.https))
               ? () {

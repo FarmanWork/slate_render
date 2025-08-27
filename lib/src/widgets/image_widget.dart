@@ -1,7 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:slate_render/src/function/helper_function.dart';
-import 'package:slate_render/src/utils/local_images.dart';
+import 'package:slate_render/slate.dart';
 
 class ImageWidget extends StatelessWidget {
   final String url;
@@ -13,22 +11,18 @@ class ImageWidget extends StatelessWidget {
         ? Padding(
             padding: const EdgeInsets.only(left: 8.0, right: 8.0),
             child: Container(
-              height: 50,
-              width: 50,
-              alignment: Alignment.topCenter,
+              height: imageHight,
+              width: imageWidth,
+              alignment: imageAlignment,
               child: GestureDetector(
                 onTap: () => HelperFunction().displayImageDialog(context, url),
                 child: CachedNetworkImage(
                   imageUrl: url,
                   fit: BoxFit.contain,
-                  placeholder: (context, url) => Image.asset(
-                    LocalImages.placeHolderImage,
-                    fit: BoxFit.contain,
-                  ),
-                  errorWidget: (context, url, error) => Image.asset(
-                    LocalImages.placeHolderImage,
-                    fit: BoxFit.contain,
-                  ),
+                  placeholder: (context, url) =>
+                      Image.asset(placeHolderImage, fit: BoxFit.contain),
+                  errorWidget: (context, url, error) =>
+                      Image.asset(placeHolderImage, fit: BoxFit.contain),
                 ),
               ),
             ),
