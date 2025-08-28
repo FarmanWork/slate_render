@@ -6,7 +6,7 @@ import 'package:slate_render/slate.dart';
 
 class SlateRenderer extends StatelessWidget {
   /// The output of slate editor
-  final Content content;
+  final Map<String, dynamic> data;
 
   /// how much line you want to display if null then all line will display
   ///  some time good for small preview pages
@@ -17,13 +17,14 @@ class SlateRenderer extends StatelessWidget {
 
   const SlateRenderer({
     super.key,
-    required this.content,
+    required this.data,
     this.maxLine = maxDisplayLine,
     this.disableLink = false,
   });
 
   @override
   Widget build(BuildContext context) {
+    final content = Content.fromJson(data);
     switch (content.type) {
       case ContentType.paragraph:
       case ContentType.link:

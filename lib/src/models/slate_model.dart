@@ -115,8 +115,8 @@ part 'slate_model.g.dart';
 abstract class Content with _$Content {
   const factory Content({
     required String type,
-    List<ChildContent>? children,
-    String? url,
+    @Default([]) List<ChildContent>? children,
+    @Default("") String? url,
     dynamic width,
     String? anchor,
     dynamic height,
@@ -130,16 +130,16 @@ abstract class Content with _$Content {
 @freezed
 abstract class ChildContent with _$ChildContent {
   const factory ChildContent({
-    bool? bold,
+    @Default(false) bool? bold,
     String? text,
-    bool? italic,
-    bool? underline,
-    bool? closeText,
-    String? type,
-    List<ChildContent>? children,
-    String? url,
-    String? color,
-    String? bgColor,
+    @Default(false) bool? italic,
+    @Default(false) bool? underline,
+    @Default(false) bool? closeText,
+    @Default("Guest") String? type,
+    @Default([]) List<ChildContent>? children,
+    @Default("") String? url,
+    @Default("Guest") String? color,
+    @Default("Guest") String? bgColor,
   }) = _ChildContent;
 
   factory ChildContent.fromJson(Map<String, dynamic> json) =>

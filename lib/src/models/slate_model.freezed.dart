@@ -216,12 +216,12 @@ return $default(_that.type,_that.children,_that.url,_that.width,_that.anchor,_th
 @JsonSerializable()
 
 class _Content implements Content {
-  const _Content({required this.type, final  List<ChildContent>? children, this.url, this.width, this.anchor, this.height, this.alignment, this.redirection}): _children = children;
+  const _Content({required this.type, final  List<ChildContent>? children = const [], this.url = "", this.width, this.anchor, this.height, this.alignment, this.redirection}): _children = children;
   factory _Content.fromJson(Map<String, dynamic> json) => _$ContentFromJson(json);
 
 @override final  String type;
  final  List<ChildContent>? _children;
-@override List<ChildContent>? get children {
+@override@JsonKey() List<ChildContent>? get children {
   final value = _children;
   if (value == null) return null;
   if (_children is EqualUnmodifiableListView) return _children;
@@ -229,7 +229,7 @@ class _Content implements Content {
   return EqualUnmodifiableListView(value);
 }
 
-@override final  String? url;
+@override@JsonKey() final  String? url;
 @override final  dynamic width;
 @override final  String? anchor;
 @override final  dynamic height;
@@ -510,17 +510,17 @@ return $default(_that.bold,_that.text,_that.italic,_that.underline,_that.closeTe
 @JsonSerializable()
 
 class _ChildContent implements ChildContent {
-  const _ChildContent({this.bold, this.text, this.italic, this.underline, this.closeText, this.type, final  List<ChildContent>? children, this.url, this.color, this.bgColor}): _children = children;
+  const _ChildContent({this.bold = false, this.text, this.italic = false, this.underline = false, this.closeText = false, this.type = "Guest", final  List<ChildContent>? children = const [], this.url = "", this.color = "Guest", this.bgColor = "Guest"}): _children = children;
   factory _ChildContent.fromJson(Map<String, dynamic> json) => _$ChildContentFromJson(json);
 
-@override final  bool? bold;
+@override@JsonKey() final  bool? bold;
 @override final  String? text;
-@override final  bool? italic;
-@override final  bool? underline;
-@override final  bool? closeText;
-@override final  String? type;
+@override@JsonKey() final  bool? italic;
+@override@JsonKey() final  bool? underline;
+@override@JsonKey() final  bool? closeText;
+@override@JsonKey() final  String? type;
  final  List<ChildContent>? _children;
-@override List<ChildContent>? get children {
+@override@JsonKey() List<ChildContent>? get children {
   final value = _children;
   if (value == null) return null;
   if (_children is EqualUnmodifiableListView) return _children;
@@ -528,9 +528,9 @@ class _ChildContent implements ChildContent {
   return EqualUnmodifiableListView(value);
 }
 
-@override final  String? url;
-@override final  String? color;
-@override final  String? bgColor;
+@override@JsonKey() final  String? url;
+@override@JsonKey() final  String? color;
+@override@JsonKey() final  String? bgColor;
 
 /// Create a copy of ChildContent
 /// with the given fields replaced by the non-null parameter values.
