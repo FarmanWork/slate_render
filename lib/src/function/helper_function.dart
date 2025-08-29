@@ -1,12 +1,9 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:slate_render/src/utils/local_images.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:slate_render/slate.dart';
 
 class HelperFunction {
   ///Open url outside/inside the app.
   openUrl({required String url, LaunchMode? launchMode}) async {
-    // FToast fToast = FToast();
     try {
       if (await canLaunchUrl(Uri.parse(url))) {
         await launchUrl(
@@ -37,7 +34,7 @@ class HelperFunction {
 
   ///display a image on full screen
   displayImageDialog(BuildContext context, String url) {
-    showDialog(
+    return showDialog(
       context: context,
       builder: (_) => Scaffold(
         appBar: AppBar(title: Text("Image Preview")),
@@ -51,14 +48,10 @@ class HelperFunction {
                   child: CachedNetworkImage(
                     imageUrl: url,
                     fit: BoxFit.contain,
-                    placeholder: (context, url) => Image.asset(
-                      LocalImages.placeHolderImage,
-                      fit: BoxFit.contain,
-                    ),
-                    errorWidget: (context, url, error) => Image.asset(
-                      LocalImages.placeHolderImage,
-                      fit: BoxFit.contain,
-                    ),
+                    placeholder: (context, url) =>
+                        Image.asset(placeHolderImage, fit: BoxFit.contain),
+                    errorWidget: (context, url, error) =>
+                        Image.asset(placeHolderImage, fit: BoxFit.contain),
                   ),
                 ),
               ),

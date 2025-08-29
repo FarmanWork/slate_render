@@ -1,23 +1,21 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:slate_render/slate.dart';
-import 'package:slate_render/src/function/helper_function.dart';
 
 class ParagraphWidget extends StatelessWidget {
   final Content innerData;
   final int? maxLine;
-  final bool? isLinkDisable;
+  final bool? disableLink;
   const ParagraphWidget({
     super.key,
     required this.innerData,
-    this.maxLine = 500,
-    this.isLinkDisable = false,
+    this.maxLine,
+    this.disableLink,
   });
 
   @override
   Widget build(BuildContext context) {
     return RichText(
-      // Remove maxline if no input proviede my user
       maxLines: maxLine,
       textAlign: innerData.alignment == TextDirection.right
           ? TextAlign.right
@@ -34,11 +32,8 @@ class ParagraphWidget extends StatelessWidget {
                   innerData.children![i].children![0].text,
               recognizer: TapGestureRecognizer()
                 ..onTap =
-                    //if link is enable,
-                    // and inner child type is link then luanch the URL
-                    !isLinkDisable! &&
-                        innerData.children![i].type ==
-                            SlateRendererFieldType.link
+                    !disableLink! &&
+                        innerData.children![i].type == ContentType.link
                     ? () {
                         HelperFunction().openUrl(
                           url: innerData.children![i].url!,
@@ -46,34 +41,32 @@ class ParagraphWidget extends StatelessWidget {
                       }
                     : null,
               style: TextStyle(
-                fontSize: 14.0,
-                fontWeight: innerData.children![i].bold!
+                fontSize: paragraphFontSize,
+                fontWeight: innerData.children![i].bold
                     ? FontWeight.bold
                     : FontWeight.normal,
-                letterSpacing: 1.3,
-                height: 1.3,
-                fontStyle: innerData.children![i].italic!
+                letterSpacing: defaultLetterSpacing,
+                height: defaultTextHeight,
+                fontStyle: innerData.children![i].italic
                     ? FontStyle.italic
                     : FontStyle.normal,
                 decoration: TextDecoration.combine([
-                  innerData.children![i].closeText!
+                  innerData.children![i].closeText
                       ? TextDecoration.lineThrough
                       : TextDecoration.none,
-                  innerData.children![i].underline!
+                  innerData.children![i].underline
                       ? TextDecoration.underline
                       : TextDecoration.none,
                 ]),
                 backgroundColor: HelperFunction().convertColor(
-                  innerData.children![i].bgColor ??
-                      PlaceholderColor.textBackgroundColor,
+                  innerData.children![i].bgColor,
                 ),
                 color:
                     innerData.children![i].url!.contains(UrlType.http) ||
                         innerData.children![i].url!.contains(UrlType.https)
-                    ? Colors.blue
+                    ? PlaceholderColor.linkColor
                     : HelperFunction().convertColor(
-                        innerData.children![i].color ??
-                            PlaceholderColor.noLinkColor,
+                        innerData.children![i].color,
                       ),
               ),
             ),

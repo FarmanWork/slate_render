@@ -1,23 +1,22 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:slate_render/slate.dart';
-import 'package:slate_render/src/function/helper_function.dart';
 
 class HeadingWidget extends StatelessWidget {
   final Content innerData;
   final int? maxLine;
-  final bool? isLinkDisable;
+  final bool? disableLink;
   const HeadingWidget({
     super.key,
     required this.innerData,
-    this.maxLine = 500,
-    this.isLinkDisable = false,
+    this.maxLine,
+    this.disableLink,
   });
 
   @override
   Widget build(BuildContext context) {
     return RichText(
-      maxLines: maxLine != null ? 1 : 500,
+      maxLines: maxLine,
       textAlign: innerData.alignment == TextDirection.right
           ? TextAlign.right
           : innerData.alignment == TextDirection.center
@@ -32,7 +31,7 @@ class HeadingWidget extends StatelessWidget {
                   innerData.children![i].text ??
                   " ${innerData.children![i].children![0].text} ",
               recognizer: TapGestureRecognizer()
-                ..onTap = !isLinkDisable! && innerData.children![i].url != null
+                ..onTap = !disableLink! && innerData.children![i].url != null
                     ? () {
                         HelperFunction().openUrl(
                           url: innerData.children![i].url!,
@@ -40,40 +39,38 @@ class HeadingWidget extends StatelessWidget {
                       }
                     : null,
               style: TextStyle(
-                fontSize: innerData.type == SlateRendererFieldType.h1
-                    ? 30.0
-                    : innerData.type == SlateRendererFieldType.h2
-                    ? 25.0
-                    : innerData.type == SlateRendererFieldType.h3
-                    ? 20.0
-                    : 14.0,
-                fontWeight: innerData.children![i].bold!
+                fontSize: innerData.type == ContentType.h1
+                    ? h1FontSize
+                    : innerData.type == ContentType.h2
+                    ? h2FontSize
+                    : innerData.type == ContentType.h3
+                    ? h3FontSize
+                    : defaultFontSize,
+                fontWeight: innerData.children![i].bold
                     ? FontWeight.bold
                     : FontWeight.normal,
                 letterSpacing: 1.3,
                 height: 1.3,
-                fontStyle: innerData.children![i].italic!
+                fontStyle: innerData.children![i].italic
                     ? FontStyle.italic
                     : FontStyle.normal,
                 decoration: TextDecoration.combine([
-                  innerData.children![i].closeText!
+                  innerData.children![i].closeText
                       ? TextDecoration.lineThrough
                       : TextDecoration.none,
-                  innerData.children![i].underline!
+                  innerData.children![i].underline
                       ? TextDecoration.underline
                       : TextDecoration.none,
                 ]),
                 backgroundColor: HelperFunction().convertColor(
-                  innerData.children![i].bgColor ??
-                      PlaceholderColor.textBackgroundColor,
+                  innerData.children![i].bgColor,
                 ),
                 color:
                     innerData.children![i].url!.contains(UrlType.http) ||
                         innerData.children![i].url!.contains(UrlType.https)
                     ? Colors.blue
                     : HelperFunction().convertColor(
-                        innerData.children![i].color ??
-                            PlaceholderColor.noLinkColor,
+                        innerData.children![i].color,
                       ),
               ),
             ),

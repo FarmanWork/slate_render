@@ -3,60 +3,60 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:slate_render/slate.dart';
-import 'package:slate_render/src/widgets/heading_widget.dart';
-import 'package:slate_render/src/widgets/image_widget.dart';
-import 'package:slate_render/src/widgets/list_widget.dart';
-import 'package:slate_render/src/widgets/paragraph_widget.dart';
 
-class SlateRenderer extends StatefulWidget {
-  /// The output of slate editor
-  final Content content;
+class SlateRenderer extends StatelessWidget {
+  /// The output of slate editor in Map{String, dynamic} format
+  final Map<String, dynamic> data;
 
   /// how much line you want to display if null then all line will display
+  ///  some time good for small preview pages
   final int? maxLine;
 
   ///  What to disable link opninng, some time good for small preview pages
-  final bool? isLinkDisable;
+  final bool? disableLink;
 
   const SlateRenderer({
     super.key,
-    required this.content,
-    this.maxLine,
-    this.isLinkDisable = false,
+    required this.data,
+    this.maxLine = maxDisplayLine,
+    this.disableLink = false,
   });
 
   @override
-  State<SlateRenderer> createState() => _SlateRendererState();
-}
-
-class _SlateRendererState extends State<SlateRenderer> {
-  @override
   Widget build(BuildContext context) {
-    return ((widget.content.type == SlateRendererFieldType.paragraph) ||
-            (widget.content.type == SlateRendererFieldType.link))
-        ? ParagraphWidget(
-            innerData: widget.content,
-            maxLine: widget.maxLine,
-            isLinkDisable: false,
-          )
-        : ((widget.content.type == SlateRendererFieldType.h1) ||
-              (widget.content.type == SlateRendererFieldType.h2) ||
-              (widget.content.type == SlateRendererFieldType.h3))
-        ? HeadingWidget(
-            innerData: widget.content,
-            maxLine: widget.maxLine,
-            isLinkDisable: false,
-          )
-        : ((widget.content.type == SlateRendererFieldType.numberedList) ||
-              (widget.content.type == SlateRendererFieldType.bulletedList) ||
-              (widget.content.type == SlateRendererFieldType.listItem))
-        ? ListWidget(
-            innerData: widget.content,
-            maxLine: widget.maxLine,
-            isLinkDisable: false,
-          )
-        : widget.content.type == SlateRendererFieldType.image
-        ? ImageWidget(url: widget.content.url!)
-        : const SizedBox.shrink();
+    final content = Content.fromJson(data);
+    switch (content.type) {
+      case ContentType.paragraph:
+      case ContentType.link:
+        return ParagraphWidget(
+          innerData: content,
+          maxLine: maxLine,
+          disableLink: disableLink,
+        );
+
+      case ContentType.h1:
+      case ContentType.h2:
+      case ContentType.h3:
+        return HeadingWidget(
+          innerData: content,
+          maxLine: maxLine,
+          disableLink: disableLink,
+        );
+
+      case ContentType.numberedList:
+      case ContentType.bulletedList:
+      case ContentType.listItem:
+        return ListWidget(
+          innerData: content,
+          maxLine: maxLine,
+          disableLink: disableLink,
+        );
+
+      case ContentType.image:
+        return ImageWidget(url: content.url!);
+
+      default:
+        return const SizedBox.shrink();
+    }
   }
 }
