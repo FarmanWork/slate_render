@@ -40,39 +40,37 @@ class HeadingWidget extends StatelessWidget {
                     : null,
               style: TextStyle(
                 fontSize: innerData.type == ContentType.h1
-                    ? 30.0
+                    ? h1FontSize
                     : innerData.type == ContentType.h2
-                    ? 25.0
+                    ? h2FontSize
                     : innerData.type == ContentType.h3
-                    ? 20.0
-                    : 14.0,
-                fontWeight: innerData.children![i].bold!
+                    ? h3FontSize
+                    : defaultFontSize,
+                fontWeight: innerData.children![i].bold
                     ? FontWeight.bold
                     : FontWeight.normal,
                 letterSpacing: 1.3,
                 height: 1.3,
-                fontStyle: innerData.children![i].italic!
+                fontStyle: innerData.children![i].italic
                     ? FontStyle.italic
                     : FontStyle.normal,
                 decoration: TextDecoration.combine([
-                  innerData.children![i].closeText!
+                  innerData.children![i].closeText
                       ? TextDecoration.lineThrough
                       : TextDecoration.none,
-                  innerData.children![i].underline!
+                  innerData.children![i].underline
                       ? TextDecoration.underline
                       : TextDecoration.none,
                 ]),
                 backgroundColor: HelperFunction().convertColor(
-                  innerData.children![i].bgColor ??
-                      PlaceholderColor.textBackgroundColor,
+                  innerData.children![i].bgColor,
                 ),
                 color:
                     innerData.children![i].url!.contains(UrlType.http) ||
                         innerData.children![i].url!.contains(UrlType.https)
                     ? Colors.blue
                     : HelperFunction().convertColor(
-                        innerData.children![i].color ??
-                            PlaceholderColor.noLinkColor,
+                        innerData.children![i].color,
                       ),
               ),
             ),

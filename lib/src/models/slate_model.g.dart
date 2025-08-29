@@ -8,15 +8,17 @@ part of 'slate_model.dart';
 
 _Content _$ContentFromJson(Map<String, dynamic> json) => _Content(
   type: json['type'] as String,
-  children: (json['children'] as List<dynamic>?)
-      ?.map((e) => ChildContent.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  url: json['url'] as String?,
-  width: json['width'],
-  anchor: json['anchor'] as String?,
-  height: json['height'],
-  alignment: json['alignment'] as String?,
-  redirection: json['redirection'] as bool?,
+  children:
+      (json['children'] as List<dynamic>?)
+          ?.map((e) => ChildContent.fromJson(e as Map<String, dynamic>))
+          .toList() ??
+      const [],
+  url: json['url'] as String? ?? "",
+  width: (json['width'] as num?)?.toDouble() ?? 1,
+  anchor: json['anchor'] as String? ?? "",
+  height: (json['height'] as num?)?.toDouble() ?? 1.3,
+  alignment: json['alignment'] as String? ?? "left",
+  redirection: json['redirection'] as bool? ?? false,
 );
 
 Map<String, dynamic> _$ContentToJson(_Content instance) => <String, dynamic>{
@@ -32,18 +34,20 @@ Map<String, dynamic> _$ContentToJson(_Content instance) => <String, dynamic>{
 
 _ChildContent _$ChildContentFromJson(Map<String, dynamic> json) =>
     _ChildContent(
-      bold: json['bold'] as bool?,
+      bold: json['bold'] as bool? ?? false,
       text: json['text'] as String?,
-      italic: json['italic'] as bool?,
-      underline: json['underline'] as bool?,
-      closeText: json['closeText'] as bool?,
+      italic: json['italic'] as bool? ?? false,
+      underline: json['underline'] as bool? ?? false,
+      closeText: json['closeText'] as bool? ?? false,
       type: json['type'] as String?,
-      children: (json['children'] as List<dynamic>?)
-          ?.map((e) => ChildContent.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      url: json['url'] as String?,
-      color: json['color'] as String?,
-      bgColor: json['bgColor'] as String?,
+      children:
+          (json['children'] as List<dynamic>?)
+              ?.map((e) => ChildContent.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+      url: json['url'] as String? ?? "",
+      color: json['color'] as String? ?? "000000",
+      bgColor: json['bgColor'] as String? ?? "00FFFFFF",
     );
 
 Map<String, dynamic> _$ChildContentToJson(_ChildContent instance) =>
