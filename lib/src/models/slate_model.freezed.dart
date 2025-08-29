@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Content {
 
- String get type; List<ChildContent>? get children; String? get url; dynamic get width; String? get anchor; dynamic get height; String? get alignment; bool? get redirection;
+ String get type; List<ChildContent>? get children; String? get url; double? get width; String? get anchor; double? get height; String? get alignment; bool? get redirection;
 /// Create a copy of Content
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,12 +28,12 @@ $ContentCopyWith<Content> get copyWith => _$ContentCopyWithImpl<Content>(this as
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Content&&(identical(other.type, type) || other.type == type)&&const DeepCollectionEquality().equals(other.children, children)&&(identical(other.url, url) || other.url == url)&&const DeepCollectionEquality().equals(other.width, width)&&(identical(other.anchor, anchor) || other.anchor == anchor)&&const DeepCollectionEquality().equals(other.height, height)&&(identical(other.alignment, alignment) || other.alignment == alignment)&&(identical(other.redirection, redirection) || other.redirection == redirection));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Content&&(identical(other.type, type) || other.type == type)&&const DeepCollectionEquality().equals(other.children, children)&&(identical(other.url, url) || other.url == url)&&(identical(other.width, width) || other.width == width)&&(identical(other.anchor, anchor) || other.anchor == anchor)&&(identical(other.height, height) || other.height == height)&&(identical(other.alignment, alignment) || other.alignment == alignment)&&(identical(other.redirection, redirection) || other.redirection == redirection));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,type,const DeepCollectionEquality().hash(children),url,const DeepCollectionEquality().hash(width),anchor,const DeepCollectionEquality().hash(height),alignment,redirection);
+int get hashCode => Object.hash(runtimeType,type,const DeepCollectionEquality().hash(children),url,width,anchor,height,alignment,redirection);
 
 @override
 String toString() {
@@ -48,7 +48,7 @@ abstract mixin class $ContentCopyWith<$Res>  {
   factory $ContentCopyWith(Content value, $Res Function(Content) _then) = _$ContentCopyWithImpl;
 @useResult
 $Res call({
- String type, List<ChildContent>? children, String? url, dynamic width, String? anchor, dynamic height, String? alignment, bool? redirection
+ String type, List<ChildContent>? children, String? url, double? width, String? anchor, double? height, String? alignment, bool? redirection
 });
 
 
@@ -71,9 +71,9 @@ type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as String,children: freezed == children ? _self.children : children // ignore: cast_nullable_to_non_nullable
 as List<ChildContent>?,url: freezed == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
 as String?,width: freezed == width ? _self.width : width // ignore: cast_nullable_to_non_nullable
-as dynamic,anchor: freezed == anchor ? _self.anchor : anchor // ignore: cast_nullable_to_non_nullable
+as double?,anchor: freezed == anchor ? _self.anchor : anchor // ignore: cast_nullable_to_non_nullable
 as String?,height: freezed == height ? _self.height : height // ignore: cast_nullable_to_non_nullable
-as dynamic,alignment: freezed == alignment ? _self.alignment : alignment // ignore: cast_nullable_to_non_nullable
+as double?,alignment: freezed == alignment ? _self.alignment : alignment // ignore: cast_nullable_to_non_nullable
 as String?,redirection: freezed == redirection ? _self.redirection : redirection // ignore: cast_nullable_to_non_nullable
 as bool?,
   ));
@@ -160,7 +160,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String type,  List<ChildContent>? children,  String? url,  dynamic width,  String? anchor,  dynamic height,  String? alignment,  bool? redirection)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String type,  List<ChildContent>? children,  String? url,  double? width,  String? anchor,  double? height,  String? alignment,  bool? redirection)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Content() when $default != null:
 return $default(_that.type,_that.children,_that.url,_that.width,_that.anchor,_that.height,_that.alignment,_that.redirection);case _:
@@ -181,7 +181,7 @@ return $default(_that.type,_that.children,_that.url,_that.width,_that.anchor,_th
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String type,  List<ChildContent>? children,  String? url,  dynamic width,  String? anchor,  dynamic height,  String? alignment,  bool? redirection)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String type,  List<ChildContent>? children,  String? url,  double? width,  String? anchor,  double? height,  String? alignment,  bool? redirection)  $default,) {final _that = this;
 switch (_that) {
 case _Content():
 return $default(_that.type,_that.children,_that.url,_that.width,_that.anchor,_that.height,_that.alignment,_that.redirection);case _:
@@ -201,7 +201,7 @@ return $default(_that.type,_that.children,_that.url,_that.width,_that.anchor,_th
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String type,  List<ChildContent>? children,  String? url,  dynamic width,  String? anchor,  dynamic height,  String? alignment,  bool? redirection)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String type,  List<ChildContent>? children,  String? url,  double? width,  String? anchor,  double? height,  String? alignment,  bool? redirection)?  $default,) {final _that = this;
 switch (_that) {
 case _Content() when $default != null:
 return $default(_that.type,_that.children,_that.url,_that.width,_that.anchor,_that.height,_that.alignment,_that.redirection);case _:
@@ -216,7 +216,7 @@ return $default(_that.type,_that.children,_that.url,_that.width,_that.anchor,_th
 @JsonSerializable()
 
 class _Content implements Content {
-  const _Content({required this.type, final  List<ChildContent>? children = const [], this.url = "", this.width, this.anchor, this.height, this.alignment, this.redirection}): _children = children;
+  const _Content({required this.type, final  List<ChildContent>? children = const [], this.url = "", this.width = 1, this.anchor = "", this.height = 1.3, this.alignment = "left", this.redirection = false}): _children = children;
   factory _Content.fromJson(Map<String, dynamic> json) => _$ContentFromJson(json);
 
 @override final  String type;
@@ -230,11 +230,11 @@ class _Content implements Content {
 }
 
 @override@JsonKey() final  String? url;
-@override final  dynamic width;
-@override final  String? anchor;
-@override final  dynamic height;
-@override final  String? alignment;
-@override final  bool? redirection;
+@override@JsonKey() final  double? width;
+@override@JsonKey() final  String? anchor;
+@override@JsonKey() final  double? height;
+@override@JsonKey() final  String? alignment;
+@override@JsonKey() final  bool? redirection;
 
 /// Create a copy of Content
 /// with the given fields replaced by the non-null parameter values.
@@ -249,12 +249,12 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Content&&(identical(other.type, type) || other.type == type)&&const DeepCollectionEquality().equals(other._children, _children)&&(identical(other.url, url) || other.url == url)&&const DeepCollectionEquality().equals(other.width, width)&&(identical(other.anchor, anchor) || other.anchor == anchor)&&const DeepCollectionEquality().equals(other.height, height)&&(identical(other.alignment, alignment) || other.alignment == alignment)&&(identical(other.redirection, redirection) || other.redirection == redirection));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Content&&(identical(other.type, type) || other.type == type)&&const DeepCollectionEquality().equals(other._children, _children)&&(identical(other.url, url) || other.url == url)&&(identical(other.width, width) || other.width == width)&&(identical(other.anchor, anchor) || other.anchor == anchor)&&(identical(other.height, height) || other.height == height)&&(identical(other.alignment, alignment) || other.alignment == alignment)&&(identical(other.redirection, redirection) || other.redirection == redirection));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,type,const DeepCollectionEquality().hash(_children),url,const DeepCollectionEquality().hash(width),anchor,const DeepCollectionEquality().hash(height),alignment,redirection);
+int get hashCode => Object.hash(runtimeType,type,const DeepCollectionEquality().hash(_children),url,width,anchor,height,alignment,redirection);
 
 @override
 String toString() {
@@ -269,7 +269,7 @@ abstract mixin class _$ContentCopyWith<$Res> implements $ContentCopyWith<$Res> {
   factory _$ContentCopyWith(_Content value, $Res Function(_Content) _then) = __$ContentCopyWithImpl;
 @override @useResult
 $Res call({
- String type, List<ChildContent>? children, String? url, dynamic width, String? anchor, dynamic height, String? alignment, bool? redirection
+ String type, List<ChildContent>? children, String? url, double? width, String? anchor, double? height, String? alignment, bool? redirection
 });
 
 
@@ -292,9 +292,9 @@ type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as String,children: freezed == children ? _self._children : children // ignore: cast_nullable_to_non_nullable
 as List<ChildContent>?,url: freezed == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
 as String?,width: freezed == width ? _self.width : width // ignore: cast_nullable_to_non_nullable
-as dynamic,anchor: freezed == anchor ? _self.anchor : anchor // ignore: cast_nullable_to_non_nullable
+as double?,anchor: freezed == anchor ? _self.anchor : anchor // ignore: cast_nullable_to_non_nullable
 as String?,height: freezed == height ? _self.height : height // ignore: cast_nullable_to_non_nullable
-as dynamic,alignment: freezed == alignment ? _self.alignment : alignment // ignore: cast_nullable_to_non_nullable
+as double?,alignment: freezed == alignment ? _self.alignment : alignment // ignore: cast_nullable_to_non_nullable
 as String?,redirection: freezed == redirection ? _self.redirection : redirection // ignore: cast_nullable_to_non_nullable
 as bool?,
   ));
@@ -307,7 +307,7 @@ as bool?,
 /// @nodoc
 mixin _$ChildContent {
 
- bool? get bold; String? get text; bool? get italic; bool? get underline; bool? get closeText; String? get type; List<ChildContent>? get children; String? get url; String? get color; String? get bgColor;
+ bool get bold; String? get text; bool get italic; bool get underline; bool get closeText; String? get type; List<ChildContent>? get children; String? get url; String get color; String get bgColor;
 /// Create a copy of ChildContent
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -340,7 +340,7 @@ abstract mixin class $ChildContentCopyWith<$Res>  {
   factory $ChildContentCopyWith(ChildContent value, $Res Function(ChildContent) _then) = _$ChildContentCopyWithImpl;
 @useResult
 $Res call({
- bool? bold, String? text, bool? italic, bool? underline, bool? closeText, String? type, List<ChildContent>? children, String? url, String? color, String? bgColor
+ bool bold, String? text, bool italic, bool underline, bool closeText, String? type, List<ChildContent>? children, String? url, String color, String bgColor
 });
 
 
@@ -357,19 +357,19 @@ class _$ChildContentCopyWithImpl<$Res>
 
 /// Create a copy of ChildContent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? bold = freezed,Object? text = freezed,Object? italic = freezed,Object? underline = freezed,Object? closeText = freezed,Object? type = freezed,Object? children = freezed,Object? url = freezed,Object? color = freezed,Object? bgColor = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? bold = null,Object? text = freezed,Object? italic = null,Object? underline = null,Object? closeText = null,Object? type = freezed,Object? children = freezed,Object? url = freezed,Object? color = null,Object? bgColor = null,}) {
   return _then(_self.copyWith(
-bold: freezed == bold ? _self.bold : bold // ignore: cast_nullable_to_non_nullable
-as bool?,text: freezed == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
-as String?,italic: freezed == italic ? _self.italic : italic // ignore: cast_nullable_to_non_nullable
-as bool?,underline: freezed == underline ? _self.underline : underline // ignore: cast_nullable_to_non_nullable
-as bool?,closeText: freezed == closeText ? _self.closeText : closeText // ignore: cast_nullable_to_non_nullable
-as bool?,type: freezed == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
+bold: null == bold ? _self.bold : bold // ignore: cast_nullable_to_non_nullable
+as bool,text: freezed == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
+as String?,italic: null == italic ? _self.italic : italic // ignore: cast_nullable_to_non_nullable
+as bool,underline: null == underline ? _self.underline : underline // ignore: cast_nullable_to_non_nullable
+as bool,closeText: null == closeText ? _self.closeText : closeText // ignore: cast_nullable_to_non_nullable
+as bool,type: freezed == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as String?,children: freezed == children ? _self.children : children // ignore: cast_nullable_to_non_nullable
 as List<ChildContent>?,url: freezed == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
-as String?,color: freezed == color ? _self.color : color // ignore: cast_nullable_to_non_nullable
-as String?,bgColor: freezed == bgColor ? _self.bgColor : bgColor // ignore: cast_nullable_to_non_nullable
-as String?,
+as String?,color: null == color ? _self.color : color // ignore: cast_nullable_to_non_nullable
+as String,bgColor: null == bgColor ? _self.bgColor : bgColor // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 
@@ -454,7 +454,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool? bold,  String? text,  bool? italic,  bool? underline,  bool? closeText,  String? type,  List<ChildContent>? children,  String? url,  String? color,  String? bgColor)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool bold,  String? text,  bool italic,  bool underline,  bool closeText,  String? type,  List<ChildContent>? children,  String? url,  String color,  String bgColor)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ChildContent() when $default != null:
 return $default(_that.bold,_that.text,_that.italic,_that.underline,_that.closeText,_that.type,_that.children,_that.url,_that.color,_that.bgColor);case _:
@@ -475,7 +475,7 @@ return $default(_that.bold,_that.text,_that.italic,_that.underline,_that.closeTe
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool? bold,  String? text,  bool? italic,  bool? underline,  bool? closeText,  String? type,  List<ChildContent>? children,  String? url,  String? color,  String? bgColor)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool bold,  String? text,  bool italic,  bool underline,  bool closeText,  String? type,  List<ChildContent>? children,  String? url,  String color,  String bgColor)  $default,) {final _that = this;
 switch (_that) {
 case _ChildContent():
 return $default(_that.bold,_that.text,_that.italic,_that.underline,_that.closeText,_that.type,_that.children,_that.url,_that.color,_that.bgColor);case _:
@@ -495,7 +495,7 @@ return $default(_that.bold,_that.text,_that.italic,_that.underline,_that.closeTe
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool? bold,  String? text,  bool? italic,  bool? underline,  bool? closeText,  String? type,  List<ChildContent>? children,  String? url,  String? color,  String? bgColor)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool bold,  String? text,  bool italic,  bool underline,  bool closeText,  String? type,  List<ChildContent>? children,  String? url,  String color,  String bgColor)?  $default,) {final _that = this;
 switch (_that) {
 case _ChildContent() when $default != null:
 return $default(_that.bold,_that.text,_that.italic,_that.underline,_that.closeText,_that.type,_that.children,_that.url,_that.color,_that.bgColor);case _:
@@ -510,15 +510,15 @@ return $default(_that.bold,_that.text,_that.italic,_that.underline,_that.closeTe
 @JsonSerializable()
 
 class _ChildContent implements ChildContent {
-  const _ChildContent({this.bold = false, this.text, this.italic = false, this.underline = false, this.closeText = false, this.type = "Guest", final  List<ChildContent>? children = const [], this.url = "", this.color = "Guest", this.bgColor = "Guest"}): _children = children;
+  const _ChildContent({this.bold = false, this.text, this.italic = false, this.underline = false, this.closeText = false, this.type, final  List<ChildContent>? children = const [], this.url = "", this.color = "000000", this.bgColor = "00FFFFFF"}): _children = children;
   factory _ChildContent.fromJson(Map<String, dynamic> json) => _$ChildContentFromJson(json);
 
-@override@JsonKey() final  bool? bold;
+@override@JsonKey() final  bool bold;
 @override final  String? text;
-@override@JsonKey() final  bool? italic;
-@override@JsonKey() final  bool? underline;
-@override@JsonKey() final  bool? closeText;
-@override@JsonKey() final  String? type;
+@override@JsonKey() final  bool italic;
+@override@JsonKey() final  bool underline;
+@override@JsonKey() final  bool closeText;
+@override final  String? type;
  final  List<ChildContent>? _children;
 @override@JsonKey() List<ChildContent>? get children {
   final value = _children;
@@ -529,8 +529,8 @@ class _ChildContent implements ChildContent {
 }
 
 @override@JsonKey() final  String? url;
-@override@JsonKey() final  String? color;
-@override@JsonKey() final  String? bgColor;
+@override@JsonKey() final  String color;
+@override@JsonKey() final  String bgColor;
 
 /// Create a copy of ChildContent
 /// with the given fields replaced by the non-null parameter values.
@@ -565,7 +565,7 @@ abstract mixin class _$ChildContentCopyWith<$Res> implements $ChildContentCopyWi
   factory _$ChildContentCopyWith(_ChildContent value, $Res Function(_ChildContent) _then) = __$ChildContentCopyWithImpl;
 @override @useResult
 $Res call({
- bool? bold, String? text, bool? italic, bool? underline, bool? closeText, String? type, List<ChildContent>? children, String? url, String? color, String? bgColor
+ bool bold, String? text, bool italic, bool underline, bool closeText, String? type, List<ChildContent>? children, String? url, String color, String bgColor
 });
 
 
@@ -582,19 +582,19 @@ class __$ChildContentCopyWithImpl<$Res>
 
 /// Create a copy of ChildContent
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? bold = freezed,Object? text = freezed,Object? italic = freezed,Object? underline = freezed,Object? closeText = freezed,Object? type = freezed,Object? children = freezed,Object? url = freezed,Object? color = freezed,Object? bgColor = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? bold = null,Object? text = freezed,Object? italic = null,Object? underline = null,Object? closeText = null,Object? type = freezed,Object? children = freezed,Object? url = freezed,Object? color = null,Object? bgColor = null,}) {
   return _then(_ChildContent(
-bold: freezed == bold ? _self.bold : bold // ignore: cast_nullable_to_non_nullable
-as bool?,text: freezed == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
-as String?,italic: freezed == italic ? _self.italic : italic // ignore: cast_nullable_to_non_nullable
-as bool?,underline: freezed == underline ? _self.underline : underline // ignore: cast_nullable_to_non_nullable
-as bool?,closeText: freezed == closeText ? _self.closeText : closeText // ignore: cast_nullable_to_non_nullable
-as bool?,type: freezed == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
+bold: null == bold ? _self.bold : bold // ignore: cast_nullable_to_non_nullable
+as bool,text: freezed == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
+as String?,italic: null == italic ? _self.italic : italic // ignore: cast_nullable_to_non_nullable
+as bool,underline: null == underline ? _self.underline : underline // ignore: cast_nullable_to_non_nullable
+as bool,closeText: null == closeText ? _self.closeText : closeText // ignore: cast_nullable_to_non_nullable
+as bool,type: freezed == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as String?,children: freezed == children ? _self._children : children // ignore: cast_nullable_to_non_nullable
 as List<ChildContent>?,url: freezed == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
-as String?,color: freezed == color ? _self.color : color // ignore: cast_nullable_to_non_nullable
-as String?,bgColor: freezed == bgColor ? _self.bgColor : bgColor // ignore: cast_nullable_to_non_nullable
-as String?,
+as String?,color: null == color ? _self.color : color // ignore: cast_nullable_to_non_nullable
+as String,bgColor: null == bgColor ? _self.bgColor : bgColor // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 

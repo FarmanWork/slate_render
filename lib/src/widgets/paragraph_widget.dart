@@ -42,33 +42,31 @@ class ParagraphWidget extends StatelessWidget {
                     : null,
               style: TextStyle(
                 fontSize: paragraphFontSize,
-                fontWeight: innerData.children![i].bold!
+                fontWeight: innerData.children![i].bold
                     ? FontWeight.bold
                     : FontWeight.normal,
-                letterSpacing: 1.3,
-                height: 1.3,
-                fontStyle: innerData.children![i].italic!
+                letterSpacing: defaultLetterSpacing,
+                height: defaultTextHeight,
+                fontStyle: innerData.children![i].italic
                     ? FontStyle.italic
                     : FontStyle.normal,
                 decoration: TextDecoration.combine([
-                  innerData.children![i].closeText!
+                  innerData.children![i].closeText
                       ? TextDecoration.lineThrough
                       : TextDecoration.none,
-                  innerData.children![i].underline!
+                  innerData.children![i].underline
                       ? TextDecoration.underline
                       : TextDecoration.none,
                 ]),
                 backgroundColor: HelperFunction().convertColor(
-                  innerData.children![i].bgColor ??
-                      PlaceholderColor.textBackgroundColor,
+                  innerData.children![i].bgColor,
                 ),
                 color:
                     innerData.children![i].url!.contains(UrlType.http) ||
                         innerData.children![i].url!.contains(UrlType.https)
                     ? PlaceholderColor.linkColor
                     : HelperFunction().convertColor(
-                        innerData.children![i].color ??
-                            PlaceholderColor.noLinkColor,
+                        innerData.children![i].color,
                       ),
               ),
             ),

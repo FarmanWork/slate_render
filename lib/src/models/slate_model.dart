@@ -117,11 +117,11 @@ abstract class Content with _$Content {
     required String type,
     @Default([]) List<ChildContent>? children,
     @Default("") String? url,
-    dynamic width,
-    String? anchor,
-    dynamic height,
-    String? alignment,
-    bool? redirection,
+    @Default(1) double? width,
+    @Default("") String? anchor,
+    @Default(1.3) double? height,
+    @Default("left") String? alignment,
+    @Default(false) bool? redirection,
   }) = _Content;
   factory Content.fromJson(Map<String, dynamic> json) =>
       _$ContentFromJson(json);
@@ -130,16 +130,16 @@ abstract class Content with _$Content {
 @freezed
 abstract class ChildContent with _$ChildContent {
   const factory ChildContent({
-    @Default(false) bool? bold,
+    @Default(false) bool bold,
     String? text,
-    @Default(false) bool? italic,
-    @Default(false) bool? underline,
-    @Default(false) bool? closeText,
-    @Default("Guest") String? type,
+    @Default(false) bool italic,
+    @Default(false) bool underline,
+    @Default(false) bool closeText,
+    String? type,
     @Default([]) List<ChildContent>? children,
     @Default("") String? url,
-    @Default("Guest") String? color,
-    @Default("Guest") String? bgColor,
+    @Default("000000") String color,
+    @Default("00FFFFFF") String bgColor,
   }) = _ChildContent;
 
   factory ChildContent.fromJson(Map<String, dynamic> json) =>

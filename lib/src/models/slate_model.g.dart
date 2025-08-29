@@ -14,11 +14,11 @@ _Content _$ContentFromJson(Map<String, dynamic> json) => _Content(
           .toList() ??
       const [],
   url: json['url'] as String? ?? "",
-  width: json['width'],
-  anchor: json['anchor'] as String?,
-  height: json['height'],
-  alignment: json['alignment'] as String?,
-  redirection: json['redirection'] as bool?,
+  width: (json['width'] as num?)?.toDouble() ?? 1,
+  anchor: json['anchor'] as String? ?? "",
+  height: (json['height'] as num?)?.toDouble() ?? 1.3,
+  alignment: json['alignment'] as String? ?? "left",
+  redirection: json['redirection'] as bool? ?? false,
 );
 
 Map<String, dynamic> _$ContentToJson(_Content instance) => <String, dynamic>{
@@ -39,15 +39,15 @@ _ChildContent _$ChildContentFromJson(Map<String, dynamic> json) =>
       italic: json['italic'] as bool? ?? false,
       underline: json['underline'] as bool? ?? false,
       closeText: json['closeText'] as bool? ?? false,
-      type: json['type'] as String? ?? "Guest",
+      type: json['type'] as String?,
       children:
           (json['children'] as List<dynamic>?)
               ?.map((e) => ChildContent.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
       url: json['url'] as String? ?? "",
-      color: json['color'] as String? ?? "Guest",
-      bgColor: json['bgColor'] as String? ?? "Guest",
+      color: json['color'] as String? ?? "000000",
+      bgColor: json['bgColor'] as String? ?? "00FFFFFF",
     );
 
 Map<String, dynamic> _$ChildContentToJson(_ChildContent instance) =>

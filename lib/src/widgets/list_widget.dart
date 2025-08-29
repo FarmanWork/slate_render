@@ -77,29 +77,25 @@ class ListWidget extends StatelessWidget {
                 }
               : null,
         style: TextStyle(
-          fontSize: 14.0,
-          fontWeight: innerData.bold! ? FontWeight.bold : FontWeight.normal,
-          letterSpacing: 1.3,
-          height: 1.3,
-          fontStyle: innerData.italic! ? FontStyle.italic : FontStyle.normal,
+          fontSize: defaultFontSize,
+          fontWeight: innerData.bold ? FontWeight.bold : FontWeight.normal,
+          letterSpacing: defaultLetterSpacing,
+          height: defaultTextHeight,
+          fontStyle: innerData.italic ? FontStyle.italic : FontStyle.normal,
           decoration: TextDecoration.combine([
-            innerData.closeText!
+            innerData.closeText
                 ? TextDecoration.lineThrough
                 : TextDecoration.none,
-            innerData.underline!
+            innerData.underline
                 ? TextDecoration.underline
                 : TextDecoration.none,
           ]),
-          backgroundColor: HelperFunction().convertColor(
-            innerData.bgColor ?? PlaceholderColor.textBackgroundColor,
-          ),
+          backgroundColor: HelperFunction().convertColor(innerData.bgColor),
           color:
               innerData.text!.contains(UrlType.http) ||
                   innerData.text!.contains(UrlType.https)
               ? PlaceholderColor.linkColor
-              : HelperFunction().convertColor(
-                  innerData.color ?? PlaceholderColor.noLinkColor,
-                ),
+              : HelperFunction().convertColor(innerData.color),
         ),
       );
     } else {
