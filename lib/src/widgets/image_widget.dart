@@ -15,7 +15,7 @@ class ImageWidget extends StatelessWidget {
               width: imageWidth,
               alignment: defaultImageAlignment,
               child: GestureDetector(
-                onTap: () => HelperFunction().displayImageDialog(context, url),
+                onTap: () => HelperFunction().previewImage(context, url),
                 child: CachedNetworkImage(
                   imageUrl: url,
                   fit: BoxFit.contain,
