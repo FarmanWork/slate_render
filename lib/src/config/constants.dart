@@ -16,9 +16,6 @@ const double paragraphFontSize = 14.0;
 const double h1FontSize = 32.0;
 const double h2FontSize = 24.0;
 const double h3FontSize = 18.72;
-// const double h4FontSize = 16.0;
-// const double h5FontSize = 13.28;
-// const double h6FontSize = 10.72;
 
 abstract class ContentType {
   static const paragraph = "paragraph";

@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:slate_render/slate.dart';
 
 class SlateRenderer extends StatelessWidget {
-  /// The output of slate editor in Map{String, dynamic} format
+  /// [data] is the output of slate editor which is input of this plugin
+  /// it accept the Map{String, dynamic} format
   final Map<String, dynamic> data;
 
   /// how much line you want to display if null then all line will display

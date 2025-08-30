@@ -90,12 +90,12 @@ class ListWidget extends StatelessWidget {
                 ? TextDecoration.underline
                 : TextDecoration.none,
           ]),
-          backgroundColor: HelperFunction().convertColor(innerData.bgColor),
+          backgroundColor: HelperFunction().toHexColor(innerData.bgColor),
           color:
               innerData.text!.contains(UrlType.http) ||
                   innerData.text!.contains(UrlType.https)
               ? PlaceholderColor.linkColor
-              : HelperFunction().convertColor(innerData.color),
+              : HelperFunction().toHexColor(innerData.color),
         ),
       );
     } else {
