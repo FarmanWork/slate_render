@@ -62,16 +62,14 @@ class HeadingWidget extends StatelessWidget {
                       ? TextDecoration.underline
                       : TextDecoration.none,
                 ]),
-                backgroundColor: HelperFunction().convertColor(
+                backgroundColor: HelperFunction().toHexColor(
                   innerData.children![i].bgColor,
                 ),
                 color:
                     innerData.children![i].url!.contains(UrlType.http) ||
                         innerData.children![i].url!.contains(UrlType.https)
                     ? Colors.blue
-                    : HelperFunction().convertColor(
-                        innerData.children![i].color,
-                      ),
+                    : HelperFunction().toHexColor(innerData.children![i].color),
               ),
             ),
         ],

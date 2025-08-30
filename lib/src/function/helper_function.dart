@@ -3,37 +3,25 @@ import 'package:slate_render/slate.dart';
 
 class HelperFunction {
   ///Open url outside/inside the app.
-  openUrl({required String url, LaunchMode? launchMode}) async {
-    try {
-      if (await canLaunchUrl(Uri.parse(url))) {
-        await launchUrl(
-          Uri.parse(url),
-          mode: launchMode ?? LaunchMode.externalApplication,
-        );
-      }
-    } catch (e) {
-      // showToast(
-      //   fToast,
-      //   "error_connecting_try_again".tr(),
-      //   NotificationStatus.failure,
-      // );
-    }
+  void openUrl({required String url, LaunchMode? launchMode}) async {
+    if (await canLaunchUrl(Uri.parse(url)) == false) return;
+
+    await launchUrl(
+      Uri.parse(url),
+      mode: launchMode ?? LaunchMode.externalApplication,
+    );
   }
 
   ///Convert the color string into hexc-color format
-  Color? convertColor(String color) {
+  Color toHexColor(String color) {
     color = color.replaceAll('#', '');
-    Color? reColor;
-    if (color.length == 6) {
-      reColor = Color(int.parse('0xFF$color'));
-    } else if (color.length == 8) {
-      reColor = Color(int.parse('0x$color'));
-    }
-    return reColor;
+    return color.length == 6
+        ? Color(int.parse('0xFF$color'))
+        : Color(int.parse('0x$color'));
   }
 
   ///display a image on full screen
-  displayImageDialog(BuildContext context, String url) {
+  previewImage(BuildContext context, String url) {
     return showDialog(
       context: context,
       builder: (_) => Scaffold(
