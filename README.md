@@ -1,43 +1,79 @@
 # slate_render
 
-Dart plugin to rander slate editor content
+slate_renderer is a Flutter package that helps you render content created with the Slate Editor into rich Flutter widgets.
 
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+<p align='center'>
+    <img src="https://github.com/FarmanWork/slate_render/blob/main/screenshot_home.png" />
+    <img src="https://github.com/FarmanWork/slate_render/blob/main/screenshot_view.png" />
+    <img src="https://github.com/FarmanWork/slate_render/blob/main/screenshot_image_view.png" />
+</p>
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+It parses the JSON output of Slate.js
+and converts it into clean, customizable UI components such as:
+
+📄 Paragraphs & Headings
+
+📝 Lists (numbered & bulleted)
+
+🔗 Links
+
+🖼️ Images
+
+✨ Text styles (bold, italic, underline, etc.)
+
+Why use this package?
+
+✅ Simple API – pass your Slate JSON and get widgets
+
+🎨 Customizable styling for text, links, and blocks
+
+⚡ Lightweight and fast
+
+🧩 Extensible – add your own node/mark renderers
+
+Perfect for blogs, CMS pages, documentation, or any app that needs to render rich text content from a Slate Editor.
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+```dependencies
+  flutter_native_splash: ^0.0.1
+```
+
+Don't forget to `flutter pub get`.
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+For small view
 
-```dart
-const like = 'sample';
+```
+    Padding(
+      padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+      child: SlateRenderer(
+        data: description,
+        disableLink: true,(optional)
+        maxLine: 5,(optional)
+      ),
+    ),
+```
+
+For Large View
+
+```
+    SlateRenderer(
+      data: description,
+      disableLink: false,(optional)
+      <!-- maxLine: 5 -->(optional)
+    ),
 ```
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+# Acknowledgments
+
+This package was originally created by Farman Mohmmad and also maintained by Farman Mohmmad.
+
+# Bugs or Requests
+
+If you encounter any problems feel free to open an issue. If you feel the library is missing a feature, please raise a ticket. Pull request are also welcome.

@@ -1,3 +1,3 @@
-## 0.0.1
+## [0.0.1] - (2025-Sep-01)
 
-* TODO: Describe initial release.
+- A Flutter package to parse and render Slate Editor JSON into rich Flutter widgets.
