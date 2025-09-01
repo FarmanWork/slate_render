@@ -1,3 +1,5 @@
+// create a dummay data with single object which contains all the necessary combinaltion for example
+// paragraph, heading, list(un ,or), link, image
 List<Map<String, dynamic>> mapList = [
   {
     "type": "paragraph",
