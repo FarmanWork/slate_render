@@ -48,15 +48,16 @@ class HelperFunction {
   previewImage(BuildContext context, String url) {
     return showDialog(
       context: context,
-      builder: (_) => Scaffold(
-        appBar: AppBar(title: Text("Image Preview")),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Center(
-              child: Container(
-                color: Colors.white,
-                child: Center(
+      builder: (_) => SafeArea(
+        child: Scaffold(
+          appBar: AppBar(title: Text("Image Preview")),
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Flexible(
+                  flex: 1,
                   child: CachedNetworkImage(
                     imageUrl: url,
                     fit: BoxFit.contain,
@@ -66,9 +67,9 @@ class HelperFunction {
                         const CircularProgressIndicator(),
                   ),
                 ),
-              ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
