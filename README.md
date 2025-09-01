@@ -1,6 +1,6 @@
 # slate_render
 
-slate_renderer is a Flutter package that helps you render content created with the Slate Editor into rich Flutter widgets.
+slate_render is a Flutter package that helps you render content created with the Slate Editor into rich Flutter widgets.
 
 <p align='center'>
     <img src="https://github.com/FarmanWork/slate_render/blob/main/screenshot_home.png" />
