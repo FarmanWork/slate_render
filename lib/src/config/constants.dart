@@ -4,9 +4,8 @@
 import 'package:flutter/material.dart';
 
 const int maxDisplayLine = 5000;
-const double imageHight = 50.0, imageWidth = 50.0;
+const double imageHight = 150.0, imageWidth = 150.0;
 const Alignment defaultImageAlignment = Alignment.center;
-const String placeHolderImage = 'assets/images/placeholder_image.png';
 const double defaultTextHeight = 1.3;
 const double defaultLetterSpacing = 1.3;
 const double defaultFontSize = 14.0;

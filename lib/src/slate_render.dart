@@ -54,7 +54,7 @@ class SlateRenderer extends StatelessWidget {
         );
 
       case ContentType.image:
-        return ImageWidget(url: content.url!);
+        return ImageWidget(url: content.url!, innerData: content);
 
       default:
         return const SizedBox.shrink();

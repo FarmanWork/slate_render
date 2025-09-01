@@ -31,7 +31,10 @@ class ListWidget extends StatelessWidget {
                         : innerData.type == ContentType.bulletedList
                         ? const Text(CountType.bullet)
                         : const Text(CountType.bullet),
-                    ImageWidget(url: innerData.children![indexMy].url!),
+                    ImageWidget(
+                      url: innerData.children![indexMy].url!,
+                      innerData: innerData,
+                    ),
                   ],
                 )
               : innerData.children![indexMy].type == ContentType.listItem &&
