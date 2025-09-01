@@ -14,9 +14,9 @@ _Content _$ContentFromJson(Map<String, dynamic> json) => _Content(
           .toList() ??
       const [],
   url: json['url'] as String? ?? "",
-  width: (json['width'] as num?)?.toDouble() ?? 1,
+  width: json['width'],
   anchor: json['anchor'] as String? ?? "",
-  height: (json['height'] as num?)?.toDouble() ?? 1.3,
+  height: json['height'],
   alignment: json['alignment'] as String? ?? "left",
   redirection: json['redirection'] as bool? ?? false,
 );
@@ -46,8 +46,12 @@ _ChildContent _$ChildContentFromJson(Map<String, dynamic> json) =>
               .toList() ??
           const [],
       url: json['url'] as String? ?? "",
-      color: json['color'] as String? ?? "000000",
-      bgColor: json['bgColor'] as String? ?? "00FFFFFF",
+      color: json['color'] == null
+          ? "000000"
+          : const BlackStringConverter().fromJson(json['color']),
+      bgColor: json['bgColor'] == null
+          ? "00FFFFFF"
+          : const TransparentStringConverter().fromJson(json['bgColor']),
     );
 
 Map<String, dynamic> _$ChildContentToJson(_ChildContent instance) =>
@@ -60,6 +64,6 @@ Map<String, dynamic> _$ChildContentToJson(_ChildContent instance) =>
       'type': instance.type,
       'children': instance.children,
       'url': instance.url,
-      'color': instance.color,
-      'bgColor': instance.bgColor,
+      'color': const BlackStringConverter().toJson(instance.color),
+      'bgColor': const TransparentStringConverter().toJson(instance.bgColor),
     };

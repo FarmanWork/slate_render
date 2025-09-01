@@ -14,37 +14,62 @@ class HelperFunction {
 
   ///Convert the color string into hexc-color format
   Color toHexColor(String color) {
+    // Replace # with ''(no space)
     color = color.replaceAll('#', '');
+
     return color.length == 6
         ? Color(int.parse('0xFF$color'))
         : Color(int.parse('0x$color'));
+  }
+
+  double parseDimension(String? value, {double parent = 1}) {
+    if (value == null) return 0;
+
+    value = value.trim().replaceAll(' ', ''); // remove all spaces
+
+    if (value.endsWith('%')) {
+      // Percentage: convert to fraction of parent
+      final percentage = double.tryParse(value.replaceAll('%', '').trim());
+      if (percentage != null) return parent * (percentage / 100);
+    } else if (value.toLowerCase().endsWith('px')) {
+      // Pixels: remove 'px' and parse
+      final pixels = double.tryParse(value.replaceAll('px', '').trim());
+      if (pixels != null) return pixels;
+    } else {
+      // Try parsing as plain number
+      final number = double.tryParse(value);
+      if (number != null) return number;
+    }
+
+    return 0; // fallback
   }
 
   ///display a image on full screen
   previewImage(BuildContext context, String url) {
     return showDialog(
       context: context,
-      builder: (_) => Scaffold(
-        appBar: AppBar(title: Text("Image Preview")),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Center(
-              child: Container(
-                color: Colors.white,
-                child: Center(
+      builder: (_) => SafeArea(
+        child: Scaffold(
+          appBar: AppBar(title: Text("Image Preview")),
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Flexible(
+                  flex: 1,
                   child: CachedNetworkImage(
                     imageUrl: url,
                     fit: BoxFit.contain,
                     placeholder: (context, url) =>
-                        Image.asset(placeHolderImage, fit: BoxFit.contain),
+                        const CircularProgressIndicator(),
                     errorWidget: (context, url, error) =>
-                        Image.asset(placeHolderImage, fit: BoxFit.contain),
+                        const CircularProgressIndicator(),
                   ),
                 ),
-              ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
