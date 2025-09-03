@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:slate_renderer_exmaple/src/data/dummay.dart';
-import 'package:slate_renderer_exmaple/src/widgets/item_list_widget.dart';
+import 'package:example/src/data/dummay.dart';
+import 'package:example/src/widgets/item_list_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

@@ -1,4 +1,4 @@
-# slate_renderer_exmaple
+# example
 
 A new Flutter project.
 

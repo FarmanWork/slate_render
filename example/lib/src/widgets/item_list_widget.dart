@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:slate_renderer_exmaple/src/widgets/item_card.dart';
-import 'package:slate_renderer_exmaple/src/widgets/item_widget.dart';
+import 'package:example/src/widgets/item_card.dart';
+import 'package:example/src/widgets/item_widget.dart';
 
 class ItemListWidget extends StatelessWidget {
   final List data;
