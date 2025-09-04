@@ -7,30 +7,29 @@ part of 'slate_model.dart';
 // **************************************************************************
 
 _Content _$ContentFromJson(Map<String, dynamic> json) => _Content(
-  type: json['type'] as String,
-  children:
-      (json['children'] as List<dynamic>?)
-          ?.map((e) => ChildContent.fromJson(e as Map<String, dynamic>))
-          .toList() ??
-      const [],
-  url: json['url'] as String? ?? "",
-  width: json['width'],
-  anchor: json['anchor'] as String? ?? "",
-  height: json['height'],
-  alignment: json['alignment'] as String? ?? "left",
-  redirection: json['redirection'] as bool? ?? false,
-);
+      type: json['type'] as String,
+      children: (json['children'] as List<dynamic>?)
+              ?.map((e) => ChildContent.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+      url: json['url'] as String? ?? "",
+      width: json['width'],
+      anchor: json['anchor'] as String? ?? "",
+      height: json['height'],
+      alignment: json['alignment'] as String? ?? "left",
+      redirection: json['redirection'] as bool? ?? false,
+    );
 
 Map<String, dynamic> _$ContentToJson(_Content instance) => <String, dynamic>{
-  'type': instance.type,
-  'children': instance.children,
-  'url': instance.url,
-  'width': instance.width,
-  'anchor': instance.anchor,
-  'height': instance.height,
-  'alignment': instance.alignment,
-  'redirection': instance.redirection,
-};
+      'type': instance.type,
+      'children': instance.children,
+      'url': instance.url,
+      'width': instance.width,
+      'anchor': instance.anchor,
+      'height': instance.height,
+      'alignment': instance.alignment,
+      'redirection': instance.redirection,
+    };
 
 _ChildContent _$ChildContentFromJson(Map<String, dynamic> json) =>
     _ChildContent(
@@ -40,8 +39,7 @@ _ChildContent _$ChildContentFromJson(Map<String, dynamic> json) =>
       underline: json['underline'] as bool? ?? false,
       closeText: json['closeText'] as bool? ?? false,
       type: json['type'] as String?,
-      children:
-          (json['children'] as List<dynamic>?)
+      children: (json['children'] as List<dynamic>?)
               ?.map((e) => ChildContent.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
