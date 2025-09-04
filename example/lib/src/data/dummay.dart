@@ -89,7 +89,6 @@ List<Map<String, dynamic>> newsList = [
       },
       {
         "type": "paragraph",
-
         "children": [
           {
             "closeText": true,

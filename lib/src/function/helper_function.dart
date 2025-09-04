@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:slate_render/slate.dart';
+import 'package:slate_render/slate_render.dart';
 
 class HelperFunction {
   ///Open url outside/inside the app.
@@ -13,13 +13,20 @@ class HelperFunction {
   }
 
   ///Convert the color string into hexc-color format
-  Color toHexColor(String color) {
-    // Replace # with ''(no space)
+  Color? toHexColor(String color) {
+    color = color.trim();
     color = color.replaceAll('#', '');
-
-    return color.length == 6
-        ? Color(int.parse('0xFF$color'))
-        : Color(int.parse('0x$color'));
+    Color? reColor;
+    switch (color.length) {
+      case 6:
+        reColor = Color(int.parse('0xFF$color'));
+        break;
+      case 8:
+        reColor = Color(int.parse('0x$color'));
+      default:
+        reColor = null;
+    }
+    return reColor;
   }
 
   double parseDimension(String? value, {double parent = 1}) {

@@ -3,7 +3,8 @@
 - Updated the Readme.md file
 - Updated the changeLOG.md file
 - Improved the example App
-- Removed assets
+- Redused the size
+- Formated code according to dart
 
 ## [0.0.1] - (2025-Sep-01)
 

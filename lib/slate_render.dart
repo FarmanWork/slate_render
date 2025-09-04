@@ -1,4 +1,4 @@
-export 'src/slate_render.dart';
+export 'src/slate_renderer.dart';
 export 'src/config/constants.dart';
 export 'src/models/slate_model.dart';
 export 'package:slate_render/src/widgets/heading_widget.dart';

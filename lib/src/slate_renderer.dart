@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Package imports:
-import 'package:slate_render/slate.dart';
+import 'package:slate_render/slate_render.dart';
 
 class SlateRenderer extends StatelessWidget {
   /// [data] is the output of slate editor which is input of this plugin
