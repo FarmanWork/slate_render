@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:slate_render/src/config/converter.dart';
 part 'slate_model.freezed.dart';
 part 'slate_model.g.dart';
 
@@ -23,15 +22,15 @@ abstract class Content with _$Content {
 abstract class ChildContent with _$ChildContent {
   const factory ChildContent({
     @Default(false) bool bold,
-    String? text,
+    @Default(" ") String? text,
     @Default(false) bool italic,
     @Default(false) bool underline,
     @Default(false) bool closeText,
-    String? type,
+    @Default(" ") String? type,
     @Default([]) List<ChildContent>? children,
     @Default("") String? url,
-    @Default("000000") @BlackStringConverter() String color,
-    @Default("00FFFFFF") @TransparentStringConverter() String bgColor,
+    @Default("000000") String color,
+    @Default("00FFFFFF") String bgColor,
   }) = _ChildContent;
 
   factory ChildContent.fromJson(Map<String, dynamic> json) =>

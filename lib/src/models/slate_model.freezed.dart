@@ -512,9 +512,7 @@ mixin _$ChildContent {
   String? get type;
   List<ChildContent>? get children;
   String? get url;
-  @BlackStringConverter()
   String get color;
-  @TransparentStringConverter()
   String get bgColor;
 
   /// Create a copy of ChildContent
@@ -583,8 +581,8 @@ abstract mixin class $ChildContentCopyWith<$Res> {
       String? type,
       List<ChildContent>? children,
       String? url,
-      @BlackStringConverter() String color,
-      @TransparentStringConverter() String bgColor});
+      String color,
+      String bgColor});
 }
 
 /// @nodoc
@@ -757,8 +755,8 @@ extension ChildContentPatterns on ChildContent {
             String? type,
             List<ChildContent>? children,
             String? url,
-            @BlackStringConverter() String color,
-            @TransparentStringConverter() String bgColor)?
+            String color,
+            String bgColor)?
         $default, {
     required TResult orElse(),
   }) {
@@ -805,8 +803,8 @@ extension ChildContentPatterns on ChildContent {
             String? type,
             List<ChildContent>? children,
             String? url,
-            @BlackStringConverter() String color,
-            @TransparentStringConverter() String bgColor)
+            String color,
+            String bgColor)
         $default,
   ) {
     final _that = this;
@@ -851,8 +849,8 @@ extension ChildContentPatterns on ChildContent {
             String? type,
             List<ChildContent>? children,
             String? url,
-            @BlackStringConverter() String color,
-            @TransparentStringConverter() String bgColor)?
+            String color,
+            String bgColor)?
         $default,
   ) {
     final _that = this;
@@ -880,15 +878,15 @@ extension ChildContentPatterns on ChildContent {
 class _ChildContent implements ChildContent {
   const _ChildContent(
       {this.bold = false,
-      this.text,
+      this.text = " ",
       this.italic = false,
       this.underline = false,
       this.closeText = false,
-      this.type,
+      this.type = " ",
       final List<ChildContent>? children = const [],
       this.url = "",
-      @BlackStringConverter() this.color = "000000",
-      @TransparentStringConverter() this.bgColor = "00FFFFFF"})
+      this.color = "000000",
+      this.bgColor = "00FFFFFF"})
       : _children = children;
   factory _ChildContent.fromJson(Map<String, dynamic> json) =>
       _$ChildContentFromJson(json);
@@ -897,6 +895,7 @@ class _ChildContent implements ChildContent {
   @JsonKey()
   final bool bold;
   @override
+  @JsonKey()
   final String? text;
   @override
   @JsonKey()
@@ -908,6 +907,7 @@ class _ChildContent implements ChildContent {
   @JsonKey()
   final bool closeText;
   @override
+  @JsonKey()
   final String? type;
   final List<ChildContent>? _children;
   @override
@@ -925,11 +925,9 @@ class _ChildContent implements ChildContent {
   final String? url;
   @override
   @JsonKey()
-  @BlackStringConverter()
   final String color;
   @override
   @JsonKey()
-  @TransparentStringConverter()
   final String bgColor;
 
   /// Create a copy of ChildContent
@@ -1004,8 +1002,8 @@ abstract mixin class _$ChildContentCopyWith<$Res>
       String? type,
       List<ChildContent>? children,
       String? url,
-      @BlackStringConverter() String color,
-      @TransparentStringConverter() String bgColor});
+      String color,
+      String bgColor});
 }
 
 /// @nodoc

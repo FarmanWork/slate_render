@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:slate_render/slate.dart';
+import 'package:slate_render/slate_render.dart';
 
 class ParagraphWidget extends StatelessWidget {
   final Content innerData;
@@ -20,19 +20,17 @@ class ParagraphWidget extends StatelessWidget {
       textAlign: innerData.alignment == TextDirection.right
           ? TextAlign.right
           : innerData.alignment == TextDirection.center
-          ? TextAlign.center
-          : TextAlign.left,
+              ? TextAlign.center
+              : TextAlign.left,
       text: TextSpan(
         style: DefaultTextStyle.of(context).style,
         children: [
           for (int i = 0; i < innerData.children!.length; i++)
             TextSpan(
-              text:
-                  innerData.children![i].text ??
+              text: innerData.children![i].text ??
                   innerData.children![i].children![0].text,
               recognizer: TapGestureRecognizer()
-                ..onTap =
-                    !disableLink! &&
+                ..onTap = !disableLink! &&
                         innerData.children![i].type == ContentType.link
                     ? () {
                         HelperFunction().openUrl(
@@ -61,8 +59,7 @@ class ParagraphWidget extends StatelessWidget {
                 backgroundColor: HelperFunction().toHexColor(
                   innerData.children![i].bgColor,
                 ),
-                color:
-                    innerData.children![i].url!.contains(UrlType.http) ||
+                color: innerData.children![i].url!.contains(UrlType.http) ||
                         innerData.children![i].url!.contains(UrlType.https)
                     ? PlaceholderColor.linkColor
                     : HelperFunction().toHexColor(innerData.children![i].color),
