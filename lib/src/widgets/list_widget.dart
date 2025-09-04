@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:slate_render/slate.dart';
+import 'package:slate_render/slate_render.dart';
 
 class ListWidget extends StatelessWidget {
   final Content innerData;
@@ -29,8 +29,8 @@ class ListWidget extends StatelessWidget {
                     innerData.type == ContentType.numberedList
                         ? Text("${indexMy + 1}.  ")
                         : innerData.type == ContentType.bulletedList
-                        ? const Text(CountType.bullet)
-                        : const Text(CountType.bullet),
+                            ? const Text(CountType.bullet)
+                            : const Text(CountType.bullet),
                     ImageWidget(
                       url: innerData.children![indexMy].url!,
                       innerData: innerData,
@@ -38,28 +38,28 @@ class ListWidget extends StatelessWidget {
                   ],
                 )
               : innerData.children![indexMy].type == ContentType.listItem &&
-                    innerData.children![indexMy].children![0].text!.isNotEmpty
-              ? RichText(
-                  maxLines: maxLine,
-                  textAlign: innerData.alignment == TextDirection.right
-                      ? TextAlign.right
-                      : innerData.alignment == TextDirection.center
-                      ? TextAlign.center
-                      : TextAlign.left,
-                  text: TextSpan(
-                    text: innerData.type == ContentType.numberedList
-                        ? "${indexMy + 1}.  "
-                        : innerData.type == ContentType.bulletedList
-                        ? CountType.bullet
-                        : CountType.bullet,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                    children: [listItem(innerData.children![indexMy])],
-                  ),
-                )
-              : const SizedBox.shrink();
+                      innerData.children![indexMy].children![0].text!.isNotEmpty
+                  ? RichText(
+                      maxLines: maxLine,
+                      textAlign: innerData.alignment == TextDirection.right
+                          ? TextAlign.right
+                          : innerData.alignment == TextDirection.center
+                              ? TextAlign.center
+                              : TextAlign.left,
+                      text: TextSpan(
+                        text: innerData.type == ContentType.numberedList
+                            ? "${indexMy + 1}.  "
+                            : innerData.type == ContentType.bulletedList
+                                ? CountType.bullet
+                                : CountType.bullet,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                        children: [listItem(innerData.children![indexMy])],
+                      ),
+                    )
+                  : const SizedBox.shrink();
         }),
       ),
     );
@@ -71,8 +71,7 @@ class ListWidget extends StatelessWidget {
       return TextSpan(
         text: innerData.text,
         recognizer: TapGestureRecognizer()
-          ..onTap =
-              !disableLink! &&
+          ..onTap = !disableLink! &&
                   (innerData.text!.contains(UrlType.http) ||
                       innerData.text!.contains(UrlType.https))
               ? () {
@@ -94,8 +93,7 @@ class ListWidget extends StatelessWidget {
                 : TextDecoration.none,
           ]),
           backgroundColor: HelperFunction().toHexColor(innerData.bgColor),
-          color:
-              innerData.text!.contains(UrlType.http) ||
+          color: innerData.text!.contains(UrlType.http) ||
                   innerData.text!.contains(UrlType.https)
               ? PlaceholderColor.linkColor
               : HelperFunction().toHexColor(innerData.color),

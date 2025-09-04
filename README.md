@@ -37,8 +37,10 @@ Perfect for blogs, CMS pages, documentation, or any app that needs to render ric
 
 ## Getting started
 
+First, add slate_render as a dependency in your pubspec.yaml file.
+
 ```dependencies
-  flutter_native_splash: ^0.0.1
+  slate_render: ^0.0.2
 ```
 
 Don't forget to `flutter pub get`.
@@ -48,23 +50,19 @@ Don't forget to `flutter pub get`.
 For small view
 
 ```
-    Padding(
-      padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-      child: SlateRenderer(
-        data: description,
+     SlateRenderer(
+        data: description,(Map<String, dynamic>)
         disableLink: true,(optional)
         maxLine: 5,(optional)
       ),
-    ),
 ```
 
 For Large View
 
 ```
     SlateRenderer(
-      data: description,
+      data: description,(Map<String, dynamic>)
       disableLink: false,(optional)
-      <!-- maxLine: 5 -->(optional)
     ),
 ```
 

@@ -27,3 +27,27 @@ doc/api/
 
 .flutter-plugins
 .flutter-plugins-dependencies
+
+# for example app
+example/.idea/
+example/android/.gradle/
+example/.DS_Store
+example/.build/
+example/.buildlog/
+example/.history
+example/.svn/
+example/.swiftpm/
+example/.atom/
+example/**/doc/api/
+example/**/ios/Flutter/.last_build_id
+example/.dart_tool/
+example/.flutter-plugins-dependencies
+example/.pub-cache/
+example/.pub/
+example/build/
+example/coverage/
+
+# Android Studio will place build artifacts here
+example/android/app/debug
+example/android/app/profile
+example/android/app/release
