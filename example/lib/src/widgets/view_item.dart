@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:slate_render/slate.dart';
+import 'package:slate_render/slate_render.dart';
 
 class ViewItem extends StatelessWidget {
   final String? title;

@@ -1,6 +1,6 @@
 name: slate_render
 description: "A Flutter package to parse and render Slate Editor JSON into rich Flutter widgets."
-version: 0.0.2
+version: 0.0.3
 homepage: https://github.com/FarmanWork/slate_render
 repository: https://github.com/FarmanWork/slate_render
 issue_tracker: https://github.com/FarmanWork/slate_render/issues

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:slate_render/slate.dart';
 import 'package:example/src/widgets/view_item.dart';
+import 'package:slate_render/slate_render.dart';
 
 class ItemWidget extends StatelessWidget {
   final String? title;
