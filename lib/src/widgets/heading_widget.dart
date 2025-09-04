@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:slate_render/slate.dart';
+import 'package:slate_render/slate_render.dart';
 
 class HeadingWidget extends StatelessWidget {
   final Content innerData;
@@ -20,15 +20,14 @@ class HeadingWidget extends StatelessWidget {
       textAlign: innerData.alignment == TextDirection.right
           ? TextAlign.right
           : innerData.alignment == TextDirection.center
-          ? TextAlign.center
-          : TextAlign.left,
+              ? TextAlign.center
+              : TextAlign.left,
       text: TextSpan(
         style: DefaultTextStyle.of(context).style,
         children: [
           for (int i = 0; i < innerData.children!.length; i++)
             TextSpan(
-              text:
-                  innerData.children![i].text ??
+              text: innerData.children![i].text ??
                   " ${innerData.children![i].children![0].text} ",
               recognizer: TapGestureRecognizer()
                 ..onTap = !disableLink! && innerData.children![i].url != null
@@ -42,10 +41,10 @@ class HeadingWidget extends StatelessWidget {
                 fontSize: innerData.type == ContentType.h1
                     ? h1FontSize
                     : innerData.type == ContentType.h2
-                    ? h2FontSize
-                    : innerData.type == ContentType.h3
-                    ? h3FontSize
-                    : defaultFontSize,
+                        ? h2FontSize
+                        : innerData.type == ContentType.h3
+                            ? h3FontSize
+                            : defaultFontSize,
                 fontWeight: innerData.children![i].bold
                     ? FontWeight.bold
                     : FontWeight.normal,
@@ -65,8 +64,7 @@ class HeadingWidget extends StatelessWidget {
                 backgroundColor: HelperFunction().toHexColor(
                   innerData.children![i].bgColor,
                 ),
-                color:
-                    innerData.children![i].url!.contains(UrlType.http) ||
+                color: innerData.children![i].url!.contains(UrlType.http) ||
                         innerData.children![i].url!.contains(UrlType.https)
                     ? Colors.blue
                     : HelperFunction().toHexColor(innerData.children![i].color),

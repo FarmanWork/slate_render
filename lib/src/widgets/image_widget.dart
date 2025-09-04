@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:slate_render/slate.dart';
+import 'package:slate_render/slate_render.dart';
 
 class ImageWidget extends StatelessWidget {
   final String url;
@@ -14,8 +14,7 @@ class ImageWidget extends StatelessWidget {
         ? Padding(
             padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 20.0),
             child: Container(
-              height:
-                  (HelperFunction().parseDimension(
+              height: (HelperFunction().parseDimension(
                         innerData.height,
                         parent: size.height,
                       )) <
@@ -25,8 +24,7 @@ class ImageWidget extends StatelessWidget {
                       parent: size.height,
                     ))
                   : imageHight,
-              width:
-                  (HelperFunction().parseDimension(
+              width: (HelperFunction().parseDimension(
                         innerData.width,
                         parent: size.width,
                       )) <
