@@ -1,3 +1,7 @@
+## [0.0.3]
+
+- Removed the missing package issue in example app
+
 ## [0.0.2]
 
 - Updated the Readme.md file
