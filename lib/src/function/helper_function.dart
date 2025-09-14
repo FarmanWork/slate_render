@@ -52,7 +52,7 @@ class HelperFunction {
   }
 
   ///display a image on full screen
-  previewImage(BuildContext context, String url) {
+  Future<void> previewImage(BuildContext context, String url) {
     return showDialog(
       context: context,
       builder: (_) => SafeArea(

@@ -1,3 +1,10 @@
+## [0.0.4]
+
+- Added, return type to image widget
+- Fixed, image not display for macOS in example app
+- Improved, README.md
+- display example images
+
 ## [0.0.3]
 
 - Removed the missing package issue in example app

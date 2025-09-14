@@ -3,9 +3,9 @@
 slate_render is a Flutter package that helps you render content created with the Slate Editor into rich Flutter widgets.
 
 <p align='center'>
-    <img src="https://github.com/FarmanWork/slate_render/blob/main/screenshot_home.png" />
-    <img src="https://github.com/FarmanWork/slate_render/blob/main/screenshot_view.png" />
-    <img src="https://github.com/FarmanWork/slate_render/blob/main/screenshot_image_view.png" />
+    <img src="https://github.com/FarmanWork/slate_render/screenshot_home.png" />
+    <img src="https://github.com/FarmanWork/slate_render/screenshot_view.png" />
+    <img src="https://github.com/FarmanWork/slate_render/screenshot_image_view.png" />
 </p>
 
 ## Features
@@ -40,14 +40,15 @@ Perfect for blogs, CMS pages, documentation, or any app that needs to render ric
 First, add slate_render as a dependency in your pubspec.yaml file.
 
 ```dependencies
-  slate_render: ^0.0.2
+  slate_render: ^0.0.4
 ```
 
 Don't forget to `flutter pub get`.
 
 ## Usage
 
-For small view
+For small view where we want to display small portion of our content(like in list of widget) pass max Line as you want
+you can aslo disable links to not click on small view
 
 ```
      SlateRenderer(
@@ -57,7 +58,8 @@ For small view
       ),
 ```
 
-For Large View
+For Large view you can skip passing maxLine
+disableLink is also optional
 
 ```
     SlateRenderer(
@@ -70,8 +72,8 @@ For Large View
 
 # Acknowledgments
 
-This package was originally created by Farman Mohmmad and also maintained by Farman Mohmmad.
+This package was originally created by [Farman Work](https://github.com/FarmanWork) and also maintained by [Farman Work](https://github.com/FarmanWork).
 
 # Bugs or Requests
 
-If you encounter any problems feel free to open an issue. If you feel the library is missing a feature, please raise a ticket. Pull request are also welcome.
+If you encounter any problems feel free to open an [issue](https://github.com/FarmanWork/slate_render/issues). If you feel the library is missing a feature, please raise a ticket. Pull request are also welcome.
